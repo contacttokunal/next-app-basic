@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import schema from "../schema";
-import prisma from "@/prisma/client";
+import { prisma } from "@/prisma/client";
 
 export async function GET(
   request: NextRequest,
@@ -53,7 +53,7 @@ export async function DELETE(
     return NextResponse.json({ error: "User not found" }, { status: 404 });
 
   prisma.user.delete({
-    where: { id: user.id  },
+    where: { id: user.id },
   });
   return NextResponse.json({});
 }
